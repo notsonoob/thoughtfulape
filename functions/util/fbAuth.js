@@ -1,6 +1,6 @@
 // valid token authentication
 
-const { admin } = require('./admin');
+const { admin, db } = require('./admin');
 
 exports.fbAuth = (req, res, next) => {
     let idToken;

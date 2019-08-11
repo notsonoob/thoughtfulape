@@ -13,34 +13,9 @@ import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 // higher order component styling
-const styles = {
-  form: {
-    textAlign: "center",
-    margin: "20px"
-  },
-  image: {
-    margin: "20px auto 20px auto"
-  },
-  pageTitle: {
-    margin: "20px auto 20px auto"
-  },
-  textField: {
-    margin: "10px auto 10px auto"
-  },
-  button: {
-    marginTop: 20,
-    marginBottom: 10,
-    position: "relative"
-  },
-  customError: {
-    color: "red",
-    fontSize: "0.8rem",
-    marginTop: 10
-  },
-  progress: {
-    position: "absolute"
-  }
-};
+const styles = theme => ({
+  ...theme.spreadThis
+});
 
 class login extends Component {
   constructor() {
@@ -66,6 +41,7 @@ class login extends Component {
       .post("/login", userData)
       .then(res => {
         console.log(res.data);
+        localStorage.setItem("FBIdToken", `Bearer ${res.data.token}`);
         this.setState({
           loading: false
         });
@@ -78,7 +54,7 @@ class login extends Component {
         });
       });
   };
-  handlChange = event => {
+  handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
     });
@@ -110,7 +86,7 @@ class login extends Component {
               helperText={errors.email}
               error={errors.email ? true : false}
               value={this.state.email}
-              onChange={this.handlChange}
+              onChange={this.handleChange}
               fullWidth
             />
             <TextField
@@ -122,7 +98,7 @@ class login extends Component {
               helperText={errors.password}
               error={errors.password ? true : false}
               value={this.state.password}
-              onChange={this.handlChange}
+              onChange={this.handleChange}
               fullWidth
             />
             {errors.general && (

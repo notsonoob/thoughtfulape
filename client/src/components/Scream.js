@@ -14,14 +14,15 @@ import Typography from "@material-ui/core/Typography";
 const styles = {
   card: {
     display: "flex",
-    marginBottom: 20
+    marginBottom: 20,
+    marginRight: 20
   },
   image: {
     minWidth: 150
   },
   content: {
     padding: 25,
-    objectFit: "cover"
+    objectFit: "contain"
   }
 };
 

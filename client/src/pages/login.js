@@ -29,7 +29,7 @@ class login extends Component {
       errors: {}
     };
   }
-  
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.UI.errors) {
       this.setState({ errors: nextProps.UI.errors });
@@ -102,7 +102,7 @@ class login extends Component {
             <Button
               type="submit"
               variant="contained"
-              color="primary"
+              color="secondary"
               className={classes.button}
               disabled={loading}
             >

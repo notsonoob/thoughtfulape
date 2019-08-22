@@ -20,19 +20,21 @@ import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 import { connect } from "react-redux";
 import { likeScream, unlikeScream } from "../redux/actions/dataActions";
 import customButton from "../util/customButton";
+import DeleteScream from "./DeleteScream";
 
 // higher order component styling - mui stuff
 const styles = {
   card: {
     display: "flex",
     marginBottom: 20,
-    marginRight: 20
+    marginRight: 20,
+    position: "relative"
   },
   image: {
     minWidth: 150
   },
   content: {
-    padding: 25,
+    padding: 30,
     objectFit: "cover"
   }
 };
@@ -68,7 +70,10 @@ class Scream extends Component {
         likeCount,
         commentCount
       },
-      user: { authenticated }
+      user: {
+        authenticated,
+        credentials: { handle }
+      }
     } = this.props;
     const likeButton = !authenticated ? (
       <customButton tip="like">
@@ -85,6 +90,10 @@ class Scream extends Component {
         <FavoriteBorder color="primary" />
       </customButton>
     );
+    const deleteButton =
+      authenticated && userHandle === handle ? (
+        <DeleteScream screamId={screamId} />
+      ) : null;
     return (
       <Card className={classes.card}>
         <CardMedia
@@ -101,6 +110,7 @@ class Scream extends Component {
           >
             {userHandle}
           </Typography>
+          {deleteButton}
           <Typography variant="body2" color="textSecondary">
             {dayjs(createdAt).fromNow()}
           </Typography>

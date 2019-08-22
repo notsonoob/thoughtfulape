@@ -22,13 +22,24 @@ class Navbar extends Component {
         <Toolbar className="nav-container">
           {authenticated ? (
             <>
-              <customButton tip="post something..">
-                <AddIcon />
-              </customButton>
-              <Link to="/">
-                <customButton tip="home">
-                  <HomeIcon />
+              {customButton && (
+                <customButton
+                  tip="post something.."
+                  placement="top"
+                  path="../util/customButton"
+                >
+                  <AddIcon />
                 </customButton>
+              )}
+              {/* <customButton tip="post something..">
+                <AddIcon />
+              </customButton> */}
+              <Link to="/">
+                {customButton && (
+                  <customButton tip="home" path="../util/customButton">
+                    <HomeIcon />
+                  </customButton>
+                )}
               </Link>
               <customButton tip="notifications">
                 <Notifications />

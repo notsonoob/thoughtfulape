@@ -13,13 +13,13 @@ export default {
       contrastText: "#fff"
     }
   },
-  typography: {
-    useNextVariants: true
-  },
   spreadThis: {
     form: {
       textAlign: "center",
       margin: "20px"
+    },
+    typography: {
+      useNextVariants: true
     },
     image: {
       margin: "20px auto 20px auto"

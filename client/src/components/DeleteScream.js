@@ -17,7 +17,7 @@ import { connect } from "react-redux";
 import { deleteScream } from "../redux/actions/dataActions";
 
 const styles = {
-  deleteButton: {
+  deleteButtonup: {
     position: "float",
     top: "10%",
     left: "90%"
@@ -48,7 +48,7 @@ class DeleteScream extends Component {
           onClick={this.handleOpen}
           btnClassName={classes.deleteButton}
         >
-          <DeleteOutline color="secondary" />
+          <DeleteOutline color="secondary" className='deleteButtonup'/>
         </customButton>}
         {/* <customButton
           tip="delete"

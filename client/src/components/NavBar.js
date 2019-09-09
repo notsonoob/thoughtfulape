@@ -10,9 +10,9 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 
 // Icons
-import AddIcon from "@material-ui/icons/Add";
 import HomeIcon from "@material-ui/icons/Home";
 import Notifications from "@material-ui/icons/Notifications";
+import PostScream from "./PostScream";
 
 class Navbar extends Component {
   render() {
@@ -22,15 +22,7 @@ class Navbar extends Component {
         <Toolbar className="nav-container">
           {authenticated ? (
             <>
-              {customButton && (
-                <customButton
-                  tip="post something.."
-                  placement="top"
-                  path="../util/customButton"
-                >
-                  <AddIcon />
-                </customButton>
-              )}
+              <PostScream/>
               {/* <customButton tip="post something..">
                 <AddIcon />
               </customButton> */}

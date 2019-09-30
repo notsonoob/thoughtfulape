@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
-import customButton from "../util/customButton";
+import CustomButton from "../util/CustomButton";
 import PropTypes from "prop-types";
 
 // mui
@@ -17,8 +17,8 @@ import { connect } from "react-redux";
 import { deleteScream } from "../redux/actions/dataActions";
 
 const styles = {
-  deleteButtonup: {
-    position: "float",
+  deleteButton: {
+    position: "absolute",
     top: "10%",
     left: "90%"
   }
@@ -43,20 +43,14 @@ class DeleteScream extends Component {
 
     return (
       <>
-        {customButton && <customButton
-          tip="delete"
-          onClick={this.handleOpen}
-          btnClassName={classes.deleteButton}
-        >
-          <DeleteOutline color="secondary" className='deleteButtonup'/>
-        </customButton>}
-        {/* <customButton
+        <CustomButton
           tip="delete"
           onClick={this.handleOpen}
           btnClassName={classes.deleteButton}
         >
           <DeleteOutline color="secondary" />
-        </customButton> */}
+        </CustomButton>
+
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}

@@ -4,7 +4,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import EditDetails from "./EditDetails";
-import customButton from "../util/customButton";
+import CustomButton from "../util/CustomButton";
 
 // mui stuff
 import Button from "@material-ui/core/Button";
@@ -109,13 +109,13 @@ class Profile extends Component {
                 onChange={this.handleImageChange}
               />
               <>
-                <customButton
+                <CustomButton
                   tip="change profile pic"
                   onClick={this.handleEditPicture}
                   btnClassName="button"
                 >
                   <EditIcon color="primary" />
-                </customButton>
+                </CustomButton>
               </>
             </div>
             <hr />

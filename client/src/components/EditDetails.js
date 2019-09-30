@@ -6,7 +6,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import { connect } from "react-redux";
 import { editUserDetails } from "../redux/actions/userActions";
 
-import customButton from '../util/customButton';
+import CustomButton from "../util/CustomButton";
 
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
@@ -19,10 +19,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import EditIcon from "@material-ui/icons/Edit";
 
 const styles = theme => ({
-  ...theme.spreadThis,
-  button: {
-    float: "right"
-  }
+  ...theme.spreadThis
 });
 
 class EditDetails extends Component {
@@ -75,13 +72,13 @@ class EditDetails extends Component {
     const { classes } = this.props;
     return (
       <>
-        <customButton
+        <CustomButton
           tip="Edit details"
           onClick={this.handleOpen}
-          btnClassName={classes.button}
+          btnClassName={classes.editButton}
         >
           <EditIcon color="primary" />
-        </customButton>
+        </CustomButton>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}

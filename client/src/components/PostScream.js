@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import withStyles from "@material-ui/core/styles/withStyles";
 
-import customButton from "../util/customButton";
+import CustomButton from "../util/CustomButton";
 
 // mui
 import Button from "@material-ui/core/Button";
@@ -18,21 +18,10 @@ import CloseIcon from "@material-ui/icons/Close";
 
 // redux
 import { connect } from "react-redux";
-import { postScream } from "../redux/actions/dataActions";
+import { postScream, clearErrors } from "../redux/actions/dataActions";
 
 const styles = theme => ({
-  ...theme.spreadThis,
-  submitButton: {
-    position: "relative"
-  },
-  progressSpinner: {
-    position: "absolute"
-  },
-  closeButton: {
-    position: "absolute",
-    left: "90%",
-    top: "10%"
-  }
+  ...theme.spreadThis
 });
 
 class PostScream extends Component {
@@ -49,11 +38,9 @@ class PostScream extends Component {
         errors: nextProps.UI.errors
       });
 
-      // optional
-      // if (!nextProps.UI.errors && !nextProps.UI.loading) {
-      //   this.setState({ body: "" });
-      //   this.handleClose();
-      // }
+      if (!nextProps.UI.errors && !nextProps.UI.loading) {
+        this.setState({ body: "", open: false, errors: {} });
+      }
     }
   }
 
@@ -62,6 +49,7 @@ class PostScream extends Component {
     this.setState({ open: true });
   };
   handleClose = () => {
+    this.props.clearErrors();
     this.setState({ open: false, errors: {} });
   };
   handleChange = event => {
@@ -81,22 +69,22 @@ class PostScream extends Component {
     } = this.props;
     return (
       <>
-        <customButton onClick={this.handleOpen} tip="post something">
+        <CustomButton onClick={this.handleOpen} tip="post something">
           <AddIcon color="blue" />
-        </customButton>
+        </CustomButton>
         <Dialog
           open={this.state.open}
           onClose={this.state.close}
           fullWidth
           maxWidth="sm"
         >
-          <customButton
+          <CustomButton
             tip="close"
             onClick={this.handleClose}
             tipClassName={classes.closeButton}
           >
             <CloseIcon />
-          </customButton>
+          </CustomButton>
           <DialogTitle>Tell the World!</DialogTitle>
           <DialogContent>
             <form onSubmit={this.handleSubmit}>
@@ -138,6 +126,7 @@ class PostScream extends Component {
 
 PostScream.propTypes = {
   postScream: PropTypes.func.isRequired,
+  clearErrors: PropTypes.func.isRequired,
   UI: PropTypes.object.isRequired
 };
 
@@ -148,5 +137,5 @@ const mapStateToProps = state => ({
 // connecitng all the function with redux and hooks with styles
 export default connect(
   mapStateToProps,
-  { postScream }
+  { postScream, clearErrors }
 )(withStyles(styles)(PostScream));

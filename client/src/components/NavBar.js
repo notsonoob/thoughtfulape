@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import customButton from "../util/customButton";
+import CustomButton from "../util/CustomButton";
 
 // materialize stuff
 import AppBar from "@material-ui/core/AppBar";
@@ -23,19 +23,16 @@ class Navbar extends Component {
           {authenticated ? (
             <>
               <PostScream/>
-              {/* <customButton tip="post something..">
-                <AddIcon />
-              </customButton> */}
               <Link to="/">
-                {customButton && (
-                  <customButton tip="home" path="../util/customButton">
+                {CustomButton && (
+                  <CustomButton tip="home" path="../util/customButton">
                     <HomeIcon />
-                  </customButton>
+                  </CustomButton>
                 )}
               </Link>
-              <customButton tip="notifications">
+              <CustomButton tip="notifications">
                 <Notifications />
-              </customButton>
+              </CustomButton>
             </>
           ) : (
             <>

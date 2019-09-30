@@ -42,6 +42,46 @@ export default {
     },
     progress: {
       position: "absolute"
+    },
+    editButton: {
+      float: "right",
+      position: "relative"
+    },
+    // postscream.js
+    submitButton: {
+      position: "relative",
+      float: "right",
+      marginTop: 10
+    },
+    progressSpinner: {
+      position: "absolute"
+    },
+    closeButton: {
+      left: "91%",
+      top: "6%",
+      position: "absolute"
+    },
+    invisibleSeparator: {
+      border: "none",
+      margin: 4
+    },
+    profileImage: {
+      maxWidth: 200,
+      height: 200,
+      borderRadius: "50%",
+      objectFit: "cover"
+    },
+    dialogContent: {
+      padding: 20
+    },
+    expandButton: {
+      position: "absolute",
+      left: "90%"
+    },
+    spinThatWheel: {
+      textAlign: 'center',
+      marginTop: 50,
+      marginBottom: 50
     }
   }
 };

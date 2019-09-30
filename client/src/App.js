@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import CssBaseline from "@material-ui/core/CssBaseline";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
@@ -51,28 +52,23 @@ if (token) {
 class App extends Component {
   render() {
     return (
-      <MuiThemeProvider theme={theme}>
-        <Provider store={store}>
-          <Router>
-            <Navbar />
-            <div className="container">
-              <Switch>
-                <Route exact path="/" component={home} />
-                <AuthRoute
-                  exact
-                  path="/login"
-                  component={login}
-                />
-                <AuthRoute
-                  exact
-                  path="/signup"
-                  component={signup}
-                />
-              </Switch>
-            </div>
-          </Router>
-        </Provider>
-      </MuiThemeProvider>
+      <>
+        <CssBaseline />
+        <MuiThemeProvider theme={theme}>
+          <Provider store={store}>
+            <Router>
+              <Navbar />
+              <div className="container">
+                <Switch>
+                  <Route exact path="/" component={home} />
+                  <AuthRoute exact path="/login" component={login} />
+                  <AuthRoute exact path="/signup" component={signup} />
+                </Switch>
+              </div>
+            </Router>
+          </Provider>
+        </MuiThemeProvider>
+      </>
     );
   }
 }

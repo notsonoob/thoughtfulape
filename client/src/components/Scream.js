@@ -19,8 +19,9 @@ import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 // redux
 import { connect } from "react-redux";
 import { likeScream, unlikeScream } from "../redux/actions/dataActions";
-import customButton from "../util/customButton";
+import CustomButton from "../util/CustomButton";
 import DeleteScream from "./DeleteScream";
+import ScreamDialog from "./ScreamDialog";
 
 // higher order component styling - mui stuff
 const styles = {
@@ -76,19 +77,19 @@ class Scream extends Component {
       }
     } = this.props;
     const likeButton = !authenticated ? (
-      <customButton tip="like">
+      <CustomButton tip="like">
         <Link to="/login">
           <FavoriteBorder color="primary" />
         </Link>
-      </customButton>
+      </CustomButton>
     ) : this.likedScream() ? (
-      <customButton tip="undo like" onClick={this.unlikeScream}>
+      <CustomButton tip="undo like" onClick={this.unlikeScream}>
         <FavoriteIcon color="primary" />
-      </customButton>
+      </CustomButton>
     ) : (
-      <customButton tip="like" onClick={this.likeScream}>
+      <CustomButton tip="like" onClick={this.likeScream}>
         <FavoriteBorder color="primary" />
-      </customButton>
+      </CustomButton>
     );
     const deleteButton =
       authenticated && userHandle === handle ? (
@@ -117,10 +118,11 @@ class Scream extends Component {
           <Typography variant="body1">{body}</Typography>
           {likeButton}
           <span color="primary">{likeCount} likes</span>
-          <customButton tip="comments">
+          <CustomButton tip="comments">
             <ChatIcon color="primary" />
-          </customButton>
+          </CustomButton>
           <span color="primary">{commentCount} comments</span>
+          <ScreamDialog screamId={screamId} userHandle={userHandle} />
         </CardContent>
       </Card>
     );

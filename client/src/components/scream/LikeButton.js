@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import CustomButton from "../util/CustomButton";
+import CustomButton from "../../util/CustomButton";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
@@ -9,7 +9,7 @@ import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 
 // redux
 import { connect } from "react-redux";
-import { likeScream, unlikeScream } from "../redux/actions/dataActions";
+import { likeScream, unlikeScream } from "../../redux/actions/dataActions";
 
 export class LikeButton extends Component {
   likedScream = () => {
@@ -64,7 +64,4 @@ const mapActionsToProps = {
   unlikeScream
 };
 
-export default connect(
-  mapStateToProps,
-  mapActionsToProps
-)(LikeButton);
+export default connect(mapStateToProps, mapActionsToProps)(LikeButton);

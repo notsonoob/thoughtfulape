@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import withStyles from "@material-ui/core/styles/withStyles";
-import CustomButton from "../util/CustomButton";
+import CustomButton from "../../util/CustomButton";
 import dayjs from "dayjs";
 import { Link } from "react-router-dom";
+import LikeButton from "./LikeButton";
+import Comments from "./Comments";
 
 // material ui
 import Dialog from "@material-ui/core/Dialog";
@@ -19,8 +21,8 @@ import ChatIcon from "@material-ui/icons/Chat";
 
 // redux
 import { connect } from "react-redux";
-import { getScream } from "../redux/actions/dataActions";
-import LikeButton from "./LikeButton";
+import { getScream } from "../../redux/actions/dataActions";
+
 
 const styles = theme => ({
   ...theme.spreadThis
@@ -49,7 +51,8 @@ class ScreamDialog extends Component {
         likeCount,
         commentCount,
         userImage,
-        userHandle
+        userHandle,
+        comments
       },
       UI: { loading }
     } = this.props;
@@ -89,6 +92,8 @@ class ScreamDialog extends Component {
           </CustomButton>
           <span color="primary">{commentCount} comments</span>
         </Grid>
+        <hr className={classes.visibleSeparator} />
+        <Comments comments={comments} />
       </Grid>
     );
 

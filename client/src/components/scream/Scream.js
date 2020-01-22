@@ -17,7 +17,7 @@ import ChatIcon from "@material-ui/icons/Chat";
 import { connect } from "react-redux";
 
 // custom components
-import CustomButton from "../util/CustomButton";
+import CustomButton from "../../util/CustomButton";
 import DeleteScream from "./DeleteScream";
 import ScreamDialog from "./ScreamDialog";
 import LikeButton from "./LikeButton";

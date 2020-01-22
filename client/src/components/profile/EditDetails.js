@@ -4,9 +4,9 @@ import withStyles from "@material-ui/core/styles/withStyles";
 
 // redux
 import { connect } from "react-redux";
-import { editUserDetails } from "../redux/actions/userActions";
+import { editUserDetails } from "../../redux/actions/userActions";
 
-import CustomButton from "../util/CustomButton";
+import CustomButton from "../../util/CustomButton";
 
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";

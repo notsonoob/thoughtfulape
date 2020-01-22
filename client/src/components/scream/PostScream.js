@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import withStyles from "@material-ui/core/styles/withStyles";
 
-import CustomButton from "../util/CustomButton";
+import CustomButton from "../../util/CustomButton";
 
 // mui
 import Button from "@material-ui/core/Button";
@@ -18,7 +18,7 @@ import CloseIcon from "@material-ui/icons/Close";
 
 // redux
 import { connect } from "react-redux";
-import { postScream, clearErrors } from "../redux/actions/dataActions";
+import { postScream, clearErrors } from "../../redux/actions/dataActions";
 
 const styles = theme => ({
   ...theme.spreadThis

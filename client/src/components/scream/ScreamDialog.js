@@ -6,6 +6,7 @@ import dayjs from "dayjs";
 import { Link } from "react-router-dom";
 import LikeButton from "./LikeButton";
 import Comments from "./Comments";
+import CommentForm from "./CommentForm";
 
 // material ui
 import Dialog from "@material-ui/core/Dialog";
@@ -21,16 +22,15 @@ import ChatIcon from "@material-ui/icons/Chat";
 
 // redux
 import { connect } from "react-redux";
-import { getScream } from "../../redux/actions/dataActions";
+import { getScream, clearErrors } from "../../redux/actions/dataActions";
 
-
-const styles = theme => ({
-  ...theme.spreadThis
+const styles = (theme) => ({
+  ...theme.spreadThis,
 });
 
 class ScreamDialog extends Component {
   state = {
-    open: false
+    open: false,
   };
   handleOpen = () => {
     this.setState({ open: true });
@@ -38,6 +38,7 @@ class ScreamDialog extends Component {
   };
   handleClose = () => {
     this.setState({ open: false });
+    this.props.clearErrors();
   };
 
   // render
@@ -52,9 +53,9 @@ class ScreamDialog extends Component {
         commentCount,
         userImage,
         userHandle,
-        comments
+        comments,
       },
-      UI: { loading }
+      UI: { loading },
     } = this.props;
 
     const dialogMarkup = loading ? (
@@ -93,6 +94,7 @@ class ScreamDialog extends Component {
           <span color="primary">{commentCount} comments</span>
         </Grid>
         <hr className={classes.visibleSeparator} />
+        <CommentForm screamId={screamId} />
         <Comments comments={comments} />
       </Grid>
     );
@@ -130,20 +132,22 @@ class ScreamDialog extends Component {
 }
 
 ScreamDialog.propTypes = {
+  clearErrors: PropTypes.func.isRequired,
   getScream: PropTypes.func.isRequired,
   screamId: PropTypes.string.isRequired,
   userHandle: PropTypes.string.isRequired,
   scream: PropTypes.object.isRequired,
-  UI: PropTypes.object.isRequired
+  UI: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   scream: state.data.scream,
-  UI: state.UI
+  UI: state.UI,
 });
 
 const mapActionsToProps = {
-  getScream
+  getScream,
+  clearErrors,
 };
 
 export default connect(

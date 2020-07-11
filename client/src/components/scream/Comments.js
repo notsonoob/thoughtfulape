@@ -8,8 +8,8 @@ import dayjs from "dayjs";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 
-const styles = theme => ({
-  ...theme.spreadThis
+const styles = (theme) => ({
+  ...theme.spreadThis,
 });
 
 class Comments extends Component {
@@ -17,7 +17,7 @@ class Comments extends Component {
     const { comments, classes } = this.props;
     return (
       <Grid container>
-        {comments.map(comment => {
+        {comments.map((comment) => {
           const { body, createdAt, userImage, userHandle } = comment;
           return (
             <Fragment key={createdAt}>
@@ -58,8 +58,8 @@ class Comments extends Component {
   }
 }
 
-Comments.propTypes = {
-  comments: PropTypes.array.isRequired
+Comments.protoTypes = {
+  comments: PropTypes.array.isRequired,
 };
 
 export default withStyles(styles)(Comments);

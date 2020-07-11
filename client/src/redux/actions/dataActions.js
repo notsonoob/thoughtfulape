@@ -9,7 +9,8 @@ import {
   POST_SCREAM,
   CLEAR_ERRORS,
   STOP_LOADING_UI,
-  SET_SCREAM
+  SET_SCREAM,
+  SUBMIT_COMMENT
 } from "../types";
 import axios from "axios";
 
@@ -56,7 +57,7 @@ export const postScream = newScream => dispatch => {
         type: POST_SCREAM,
         payload: res.data
       });
-      dispatch({ type: CLEAR_ERRORS });
+      dispatch(clearErrors());
     })
     .catch(err => {
       dispatch({
@@ -93,6 +94,32 @@ export const unlikeScream = screamId => dispatch => {
     })
     .catch(err => {
       console.log(err);
+    });
+};
+
+/**
+ * submitting a comment
+ * clearErrors is a function that behaves as an action
+ * using clearErrors will do less checking at every point
+ * and by calling the function it generates more reusability and contentability
+ * at all the points
+ * this makes the code more simpler
+ */
+export const submitComment = (screamId, commentData) => dispatch => {
+  axios
+    .post(`/scream/${screamId}/comment`, commentData)
+    .then(res => {
+      dispatch({
+        type: SUBMIT_COMMENT,
+        payload: res.data
+      });
+      dispatch(clearErrors()); 
+    })
+    .catch(err => {
+      dispatch({
+        type: SET_ERRORS,
+        payload: err.response.data
+      });
     });
 };
 

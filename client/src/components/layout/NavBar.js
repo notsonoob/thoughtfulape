@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import CustomButton from "../../util/CustomButton";
+import Notifications from "./Notifications";
 
 // materialize stuff
 import AppBar from "@material-ui/core/AppBar";
@@ -11,7 +12,7 @@ import Button from "@material-ui/core/Button";
 
 // Icons
 import HomeIcon from "@material-ui/icons/Home";
-import Notifications from "@material-ui/icons/Notifications";
+
 import PostScream from "../scream/PostScream";
 
 class Navbar extends Component {
@@ -22,7 +23,7 @@ class Navbar extends Component {
         <Toolbar className="nav-container">
           {authenticated ? (
             <>
-              <PostScream/>
+              <PostScream />
               <Link to="/">
                 {CustomButton && (
                   <CustomButton tip="home" path="../util/customButton">
@@ -30,9 +31,8 @@ class Navbar extends Component {
                   </CustomButton>
                 )}
               </Link>
-              <CustomButton tip="notifications">
-                <Notifications />
-              </CustomButton>
+
+              <Notifications />
             </>
           ) : (
             <>
@@ -54,11 +54,11 @@ class Navbar extends Component {
 }
 
 Navbar.propTypes = {
-  authenticated: PropTypes.bool.isRequired
+  authenticated: PropTypes.bool.isRequired,
 };
 
-const mapStateToProps = state => ({
-  authenticated: state.user.authenticated
+const mapStateToProps = (state) => ({
+  authenticated: state.user.authenticated,
 });
 
 export default connect(mapStateToProps)(Navbar);

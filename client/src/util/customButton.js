@@ -3,10 +3,11 @@ import React from "react";
 import Tooltip from "@material-ui/core/Tooltip";
 import IconButton from "@material-ui/core/IconButton";
 
-// to do : work on this ...
-// bug iusse
+// got fixed the error of not properly showing of the tooltips of
+// several components
+
 export default ({ children, onClick, tip, btnClassName, tipClassName }) => (
-  <Tooltip title={tip} className={tipClassName} placement="top">
+  <Tooltip title={tip} className={tipClassName} placement="bottom">
     <IconButton onClick={onClick} className={btnClassName}>
       {children}
     </IconButton>
